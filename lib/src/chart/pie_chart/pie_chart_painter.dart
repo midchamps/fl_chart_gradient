@@ -4,6 +4,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:fl_chart/src/chart/base/base_chart/base_chart_painter.dart';
 import 'package:fl_chart/src/chart/base/line.dart';
 import 'package:fl_chart/src/chart/pie_chart/pie_chart_data.dart';
+import 'package:fl_chart/src/extensions/paint_extension.dart';
 import 'package:fl_chart/src/utils/canvas_wrapper.dart';
 import 'package:fl_chart/src/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -190,6 +191,12 @@ class PieChartPainter extends BaseChartPainter<PieChartData> {
       ..arcTo(centerRadiusRect, endRadians, -sweepRadians, false)
       ..moveTo(startLine.from.dx, startLine.from.dy)
       ..close();
+
+    _sectionPaint.setColorOrGradient(
+      section.color,
+      section.gradient,
+      sectionRadiusRect,
+    );
 
     /// Subtract section space from the sectionPath
     if (sectionSpace != 0) {

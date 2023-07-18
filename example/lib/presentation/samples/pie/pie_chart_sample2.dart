@@ -110,6 +110,14 @@ class PieChart2State extends State {
             value: 40,
             title: '40%',
             radius: radius,
+            gradient: const LinearGradient(
+              colors: [
+                AppColors.contentColorBlue,
+                AppColors.contentColorBlack,
+              ],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
             titleStyle: TextStyle(
               fontSize: fontSize,
               fontWeight: FontWeight.bold,
