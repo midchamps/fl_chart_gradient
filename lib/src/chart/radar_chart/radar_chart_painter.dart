@@ -330,11 +330,54 @@ class RadarChartPainter extends BaseChartPainter<RadarChartData> {
     final data = holder.data;
     // we will use dataSetsPosition to draw the graphs
     dataSetsPosition ??= calculateDataSetsPosition(canvasWrapper.size, holder);
+
+    final size = canvasWrapper.size;
+    final centerX = radarCenterX(size);
+    final centerY = radarCenterY(size);
+    final centerOffset = Offset(centerX, centerY);
+    final radius = radarRadius(size);
+
     dataSetsPosition!.asMap().forEach((index, dataSetOffset) {
       final graph = data.dataSets[index];
+      // Create the gradient
+      final sweepGradient = SweepGradient(
+        startAngle: 3 * pi / 2,
+        endAngle: 7 * pi / 2,
+        tileMode: TileMode.repeated,
+        colors: [
+          // Colors.green.shade900.withOpacity(0.9),
+          // Colors.green.shade800.withOpacity(0.9),
+          // Colors.green.shade700.withOpacity(0.9),
+          // Colors.green.shade600.withOpacity(0.9),
+          // Colors.green.shade500.withOpacity(0.9),
+          // Colors.green.shade400.withOpacity(0.9),
+
+          graph.fillColor.withOpacity(0.9),
+          graph.fillColor.withOpacity(0.8),
+          graph.fillColor.withOpacity(0.7),
+          graph.fillColor.withOpacity(0.6),
+          graph.fillColor.withOpacity(0.5),
+          graph.fillColor.withOpacity(0.4),
+
+          // graph.fillColor.withOpacity(0.4),
+          // graph.fillColor.withOpacity(0.45),
+          // graph.fillColor.withOpacity(0.5),
+          // graph.fillColor.withOpacity(0.6),
+          // graph.fillColor.withOpacity(0.7),
+          // graph.fillColor.withOpacity(0.8),
+        ],
+        stops: [0, 0.16, 0.32, 0.48, 0.64, 0.8],
+      );
+
+      // Create the shader
+      final rect = Rect.fromCircle(center: centerOffset, radius: radius);
       _graphPaint
-        ..color = graph.fillColor
+        ..shader = sweepGradient.createShader(rect)
         ..style = PaintingStyle.fill;
+
+      // _graphPaint
+      //   ..color = graph.fillColor
+      //   ..style = PaintingStyle.fill;
 
       _graphBorderPaint
         ..color = graph.borderColor
