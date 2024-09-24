@@ -2,6 +2,7 @@ import 'package:fl_chart_app/presentation/resources/app_resources.dart';
 import 'package:fl_chart_app/util/extensions/color_extensions.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'dart:math' show pi;
 
 class RadarChartSample2 extends StatefulWidget {
   RadarChartSample2({super.key});
@@ -230,15 +231,30 @@ class _RadarChartSample2State extends State<RadarChartSample2> {
 
       return RadarDataSet(
         fillColor: isSelected
-            ? rawDataSet.color.withOpacity(0.2)
-            : rawDataSet.color.withOpacity(0.01),
-        borderColor: isSelected
-            ? rawDataSet.color.withOpacity(0.6)
+            ? rawDataSet.color.withOpacity(0.75)
             : rawDataSet.color.withOpacity(0.15),
+        borderColor:
+            isSelected ? rawDataSet.color : rawDataSet.color.withOpacity(0.2),
         entryRadius: isSelected ? 3 : 2,
+        gradient: SweepGradient(
+          startAngle: 3 * pi / 2,
+          endAngle: 7 * pi / 2,
+          tileMode: TileMode.repeated,
+          colors: isSelected
+              ? [
+                  rawDataSet.color.withOpacity(0.9),
+                  rawDataSet.color.withOpacity(0.8),
+                  rawDataSet.color.withOpacity(0.7),
+                  rawDataSet.color.withOpacity(0.6),
+                  rawDataSet.color.withOpacity(0.5),
+                  rawDataSet.color.withOpacity(0.4),
+                ]
+              : List.filled(6, Colors.grey.withOpacity(0.2)),
+          stops: [0, 0.16, 0.32, 0.48, 0.64, 0.8],
+        ),
         dataEntries:
             rawDataSet.values.map((e) => RadarEntry(value: e)).toList(),
-        borderWidth: isSelected ? 1.0 : 0.3,
+        borderWidth: isSelected ? 1.3 : 0.3,
       );
     }).toList();
   }
