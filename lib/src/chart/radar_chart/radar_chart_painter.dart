@@ -158,6 +158,10 @@ class RadarChartPainter extends BaseChartPainter<RadarChartData> {
 
         /// draw radar border
         ..drawPath(path, _borderPaint);
+      if (data.elevation > 0) {
+        canvasWrapper.canvas
+            .drawShadow(path, data.radarShadowColor, data.elevation, true);
+      }
     }
 
     final tickSpace = getSpaceBetweenTicks(data);

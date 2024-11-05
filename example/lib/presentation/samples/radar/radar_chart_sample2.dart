@@ -141,6 +141,10 @@ class _RadarChartSample2State extends State<RadarChartSample2> {
             aspectRatio: 1.0,
             child: RadarChart(
               RadarChartData(
+                elevation: 6,
+                radarShape: RadarShape.polygon,
+                radarBackgroundColor: Colors.white,
+                radarShadowColor: Colors.white,
                 radarTouchData: RadarTouchData(
                   touchCallback: (FlTouchEvent event, response) {
                     if (!event.isInterestedForInteractions) {
@@ -156,7 +160,6 @@ class _RadarChartSample2State extends State<RadarChartSample2> {
                   },
                 ),
                 dataSets: showingDataSets(),
-                radarBackgroundColor: Colors.transparent,
                 borderData: FlBorderData(show: false),
                 radarBorderData: const BorderSide(color: Colors.transparent),
                 titlePositionPercentageOffset: 0.1,
@@ -250,7 +253,7 @@ class _RadarChartSample2State extends State<RadarChartSample2> {
                   rawDataSet.color.withOpacity(0.4),
                 ]
               : List.filled(6, Colors.grey.withOpacity(0.2)),
-          stops: [0, 0.16, 0.32, 0.48, 0.64, 0.8],
+          stops: const [0, 0.16, 0.32, 0.48, 0.64, 0.8],
         ),
         dataEntries:
             rawDataSet.values.map((e) => RadarEntry(value: e)).toList(),
