@@ -377,9 +377,8 @@ class RadarEntry with EquatableMixin {
       RadarEntry(value: value ?? this.value);
 
   /// Lerps a [RadarDataSet] based on [t] value, check [Tween.lerp].
-  static RadarEntry lerp(RadarEntry a, RadarEntry b, double t) {
-    return RadarEntry(value: lerpDouble(a.value, b.value, t)!);
-  }
+  static RadarEntry lerp(RadarEntry a, RadarEntry b, double t) =>
+      RadarEntry(value: lerpDouble(a.value, b.value, t)!);
 
   /// Used for equality check, see [EquatableMixin].
   @override
@@ -446,11 +445,10 @@ class RadarTouchResponse extends BaseTouchResponse {
   /// and replaces provided values.
   RadarTouchResponse copyWith({
     RadarTouchedSpot? touchedSpot,
-  }) {
-    return RadarTouchResponse(
-      touchedSpot ?? this.touchedSpot,
-    );
-  }
+  }) =>
+      RadarTouchResponse(
+        touchedSpot ?? this.touchedSpot,
+      );
 }
 
 /// It gives you information about the touched spot.
