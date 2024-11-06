@@ -152,16 +152,16 @@ class RadarChartPainter extends BaseChartPainter<RadarChartData> {
       final path =
           _generatePolygonPath(centerX, centerY, radius, data.titleCount);
 
-      /// draw radar background
-      canvasWrapper
-        ..drawPath(path, _backgroundPaint)
-
-        /// draw radar border
-        ..drawPath(path, _borderPaint);
+      /// draw radar shadow
       if (data.elevation > 0) {
         canvasWrapper.canvas
             .drawShadow(path, data.radarShadowColor, data.elevation, true);
       }
+      /// draw radar background
+      canvasWrapper
+        ..drawPath(path, _backgroundPaint)
+        /// draw radar border
+        ..drawPath(path, _borderPaint);
     }
 
     final tickSpace = getSpaceBetweenTicks(data);

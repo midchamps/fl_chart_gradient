@@ -141,7 +141,7 @@ class _RadarChartSample2State extends State<RadarChartSample2> {
             aspectRatio: 1.0,
             child: RadarChart(
               RadarChartData(
-                elevation: 6,
+                elevation: 10,
                 radarShape: RadarShape.polygon,
                 radarBackgroundColor: Colors.white,
                 radarShadowColor: Colors.white,
