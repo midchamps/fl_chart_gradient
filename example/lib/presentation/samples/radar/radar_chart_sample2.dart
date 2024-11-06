@@ -143,7 +143,7 @@ class _RadarChartSample2State extends State<RadarChartSample2> {
               RadarChartData(
                 elevation: 10,
                 radarShape: RadarShape.polygon,
-                radarBackgroundColor: Colors.white,
+                radarBackgroundColor: Colors.amber,
                 radarShadowColor: Colors.white,
                 radarTouchData: RadarTouchData(
                   touchCallback: (FlTouchEvent event, response) {

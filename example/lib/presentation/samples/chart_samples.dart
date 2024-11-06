@@ -63,7 +63,7 @@ class ChartSamples {
       ScatterChartSample(2, (context) => const ScatterChartSample2()),
     ],
     ChartType.radar: [
-      // RadarChartSample(1, (context) => RadarChartSample1()),
+      RadarChartSample(1, (context) => RadarChartSample1()),
       RadarChartSample(2, (context) => RadarChartSample2()),
     ],
   };
